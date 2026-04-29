@@ -193,7 +193,7 @@
               <p class="version" data-version>Carregando versão...</p>
               <p class="status" data-status>Consultando o feed público de updates.</p>
             </div>
-            <a class="download-button" href="windows/latest.yml" aria-disabled="true" data-download>
+            <a class="download-button" href="latest.yml" aria-disabled="true" data-download>
               Baixar Connex
             </a>
           </div>
@@ -214,8 +214,8 @@
           </div>
 
           <div class="links">
-            <a href="windows/latest.yml">Ver latest.yml</a>
-            <a href="windows/">Abrir pasta Windows</a>
+            <a href="latest.yml">Ver latest.yml</a>
+            <a href="latest.yml" data-direct-link>Link direto do instalador</a>
           </div>
         </section>
       </section>
@@ -228,6 +228,7 @@
       const sizeEl = document.querySelector("[data-size]");
       const dateEl = document.querySelector("[data-date]");
       const downloadEl = document.querySelector("[data-download]");
+      const directLinkEl = document.querySelector("[data-direct-link]");
 
       function readValue(yaml, key) {
         const match = yaml.match(new RegExp(`^${key}:\\s*(.+)$`, "m"));
@@ -243,22 +244,34 @@
         return `${(size / 1024 / 1024).toFixed(1)} MB`;
       }
 
-      async function loadLatest() {
-        try {
-          const response = await fetch(`windows/latest.yml?ts=${Date.now()}`, {
+      async function fetchLatestFeed() {
+        const candidates = ["latest.yml", "windows/latest.yml"];
+
+        for (const candidate of candidates) {
+          const response = await fetch(`${candidate}?ts=${Date.now()}`, {
             cache: "no-store",
           });
 
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+          if (response.ok) {
+            return {
+              basePath: candidate.includes("/") ? candidate.replace(/\/latest\.yml$/, "/") : "",
+              yaml: await response.text(),
+            };
           }
+        }
 
-          const yaml = await response.text();
+        throw new Error("latest.yml não encontrado");
+      }
+
+      async function loadLatest() {
+        try {
+          const latestFeed = await fetchLatestFeed();
+          const yaml = latestFeed.yaml;
           const version = readValue(yaml, "version");
           const path = readValue(yaml, "path");
           const size = readValue(yaml, "size");
           const releaseDate = readValue(yaml, "releaseDate");
-          const downloadUrl = `windows/${path}`;
+          const downloadUrl = `${latestFeed.basePath}${path}`;
 
           versionEl.textContent = version ? `Connex ${version}` : "Connex";
           statusEl.textContent = "Instalador para Windows pronto para download.";
@@ -275,6 +288,7 @@
             downloadEl.href = downloadUrl;
             downloadEl.removeAttribute("aria-disabled");
             downloadEl.textContent = "Baixar Connex para Windows";
+            directLinkEl.href = downloadUrl;
           }
         } catch (error) {
           versionEl.textContent = "Connex";

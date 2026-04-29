@@ -1,302 +1,52 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <meta http-equiv="refresh" content="0; url=windows/" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Connex Downloads</title>
+    <title>Connex | Downloads</title>
     <style>
-      :root {
-        color-scheme: light;
-        --bg: #f4f8fc;
-        --panel: #ffffff;
-        --text: #12243a;
-        --muted: #5c718a;
-        --accent: #1f73e0;
-        --accent-strong: #1456b8;
-        --border: rgba(18, 36, 58, 0.12);
-        --success: #2f8b67;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
       body {
         margin: 0;
         min-height: 100vh;
+        display: grid;
+        place-items: center;
         font-family: "Segoe UI", Aptos, Arial, sans-serif;
-        color: var(--text);
-        background:
-          linear-gradient(135deg, rgba(31, 115, 224, 0.14), transparent 34%),
-          linear-gradient(180deg, #fbfdff 0%, var(--bg) 100%);
+        color: #142233;
+        background: #eef3f8;
       }
 
       main {
-        width: min(920px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 56px 0;
-      }
-
-      .hero {
-        display: grid;
-        gap: 24px;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--muted);
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .brand-mark {
-        width: 13px;
-        height: 13px;
-        border-radius: 50%;
-        background: var(--success);
-        box-shadow: 0 0 0 7px rgba(47, 139, 103, 0.14);
+        width: min(520px, calc(100% - 32px));
+        padding: 28px;
+        border: 1px solid #d8e1ea;
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 20px 52px rgba(24, 48, 72, 0.12);
       }
 
       h1 {
-        margin: 0;
-        max-width: 720px;
-        font-size: clamp(40px, 7vw, 76px);
-        line-height: 0.98;
+        margin: 0 0 10px;
+        font-size: 28px;
         letter-spacing: 0;
       }
 
-      .lead {
-        max-width: 680px;
+      p {
         margin: 0;
-        color: var(--muted);
-        font-size: 18px;
-        line-height: 1.7;
+        color: #617184;
+        line-height: 1.55;
       }
 
-      .download-panel {
-        display: grid;
-        gap: 22px;
-        margin-top: 20px;
-        padding: 28px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: var(--panel);
-        box-shadow: 0 24px 70px rgba(34, 76, 126, 0.12);
-      }
-
-      .download-top {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 18px;
-        align-items: center;
-      }
-
-      .version {
-        margin: 0 0 6px;
-        font-size: 26px;
+      a {
+        color: #0f4f9f;
         font-weight: 800;
-      }
-
-      .status {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.5;
-      }
-
-      .download-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 52px;
-        padding: 14px 22px;
-        border-radius: 8px;
-        background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-        color: #fff;
-        font-weight: 800;
-        text-decoration: none;
-        box-shadow: 0 16px 32px rgba(31, 115, 224, 0.26);
-      }
-
-      .download-button[aria-disabled="true"] {
-        pointer-events: none;
-        opacity: 0.62;
-      }
-
-      .meta-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .meta {
-        min-width: 0;
-        padding: 16px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: #f8fbff;
-      }
-
-      .meta span {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--muted);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-
-      .meta strong {
-        overflow-wrap: anywhere;
-      }
-
-      .links {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-      }
-
-      .links a {
-        color: var(--accent-strong);
-        font-weight: 700;
-      }
-
-      @media (max-width: 720px) {
-        main {
-          padding: 36px 0;
-        }
-
-        .download-top,
-        .meta-grid {
-          grid-template-columns: 1fr;
-        }
       }
     </style>
   </head>
   <body>
     <main>
-      <section class="hero">
-        <div class="brand"><span class="brand-mark"></span> Connex Downloads</div>
-        <h1>Baixe a versão mais recente do Connex.</h1>
-        <p class="lead">
-          Esta página acompanha automaticamente o feed público de atualização.
-          Sempre que uma nova release for publicada, o botão principal passa a baixar o instalador atualizado.
-        </p>
-
-        <section class="download-panel">
-          <div class="download-top">
-            <div>
-              <p class="version" data-version>Carregando versão...</p>
-              <p class="status" data-status>Consultando o feed público de updates.</p>
-            </div>
-            <a class="download-button" href="latest.yml" aria-disabled="true" data-download>
-              Baixar Connex
-            </a>
-          </div>
-
-          <div class="meta-grid">
-            <div class="meta">
-              <span>Arquivo</span>
-              <strong data-file>--</strong>
-            </div>
-            <div class="meta">
-              <span>Tamanho</span>
-              <strong data-size>--</strong>
-            </div>
-            <div class="meta">
-              <span>Publicado em</span>
-              <strong data-date>--</strong>
-            </div>
-          </div>
-
-          <div class="links">
-            <a href="latest.yml">Ver latest.yml</a>
-            <a href="latest.yml" data-direct-link>Link direto do instalador</a>
-          </div>
-        </section>
-      </section>
+      <h1>Connex Downloads</h1>
+      <p>Redirecionando para a página de download. <a href="windows/">Abrir agora</a>.</p>
     </main>
-
-    <script>
-      const versionEl = document.querySelector("[data-version]");
-      const statusEl = document.querySelector("[data-status]");
-      const fileEl = document.querySelector("[data-file]");
-      const sizeEl = document.querySelector("[data-size]");
-      const dateEl = document.querySelector("[data-date]");
-      const downloadEl = document.querySelector("[data-download]");
-      const directLinkEl = document.querySelector("[data-direct-link]");
-
-      function readValue(yaml, key) {
-        const match = yaml.match(new RegExp(`^${key}:\\s*(.+)$`, "m"));
-        return match ? match[1].trim().replace(/^['"]|['"]$/g, "") : "";
-      }
-
-      function formatBytes(value) {
-        const size = Number(value);
-        if (!Number.isFinite(size) || size <= 0) {
-          return "--";
-        }
-
-        return `${(size / 1024 / 1024).toFixed(1)} MB`;
-      }
-
-      async function fetchLatestFeed() {
-        const candidates = ["latest.yml", "windows/latest.yml"];
-
-        for (const candidate of candidates) {
-          const response = await fetch(`${candidate}?ts=${Date.now()}`, {
-            cache: "no-store",
-          });
-
-          if (response.ok) {
-            return {
-              basePath: candidate.includes("/") ? candidate.replace(/\/latest\.yml$/, "/") : "",
-              yaml: await response.text(),
-            };
-          }
-        }
-
-        throw new Error("latest.yml não encontrado");
-      }
-
-      async function loadLatest() {
-        try {
-          const latestFeed = await fetchLatestFeed();
-          const yaml = latestFeed.yaml;
-          const version = readValue(yaml, "version");
-          const path = readValue(yaml, "path");
-          const size = readValue(yaml, "size");
-          const releaseDate = readValue(yaml, "releaseDate");
-          const downloadUrl = `${latestFeed.basePath}${path}`;
-
-          versionEl.textContent = version ? `Connex ${version}` : "Connex";
-          statusEl.textContent = "Instalador para Windows pronto para download.";
-          fileEl.textContent = path || "--";
-          sizeEl.textContent = formatBytes(size);
-          dateEl.textContent = releaseDate
-            ? new Intl.DateTimeFormat("pt-BR", {
-                dateStyle: "short",
-                timeStyle: "short",
-              }).format(new Date(releaseDate))
-            : "--";
-
-          if (path) {
-            downloadEl.href = downloadUrl;
-            downloadEl.removeAttribute("aria-disabled");
-            downloadEl.textContent = "Baixar Connex para Windows";
-            directLinkEl.href = downloadUrl;
-          }
-        } catch (error) {
-          versionEl.textContent = "Connex";
-          statusEl.textContent = `Não foi possível carregar o feed de updates: ${error.message}`;
-        }
-      }
-
-      void loadLatest();
-    </script>
   </body>
 </html>

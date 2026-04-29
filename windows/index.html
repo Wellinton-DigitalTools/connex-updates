@@ -3,17 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Connex Downloads</title>
+    <title>Connex | Downloads</title>
     <style>
       :root {
-        --bg: #f4f8fc;
-        --panel: #ffffff;
-        --text: #12243a;
-        --muted: #5c718a;
-        --accent: #1f73e0;
-        --accent-strong: #1456b8;
-        --border: rgba(18, 36, 58, 0.12);
-        --success: #2f8b67;
+        color-scheme: light;
+        --bg: #eef3f8;
+        --surface: #ffffff;
+        --surface-soft: #f7fafc;
+        --text: #142233;
+        --muted: #617184;
+        --border: #d8e1ea;
+        --accent: #1769d2;
+        --accent-dark: #0f4f9f;
+        --success: #16835f;
+        --warning: #9a6418;
+        --shadow: 0 20px 52px rgba(24, 48, 72, 0.12);
       }
 
       * {
@@ -25,78 +29,162 @@
         min-height: 100vh;
         font-family: "Segoe UI", Aptos, Arial, sans-serif;
         color: var(--text);
-        background:
-          linear-gradient(135deg, rgba(31, 115, 224, 0.14), transparent 34%),
-          linear-gradient(180deg, #fbfdff 0%, var(--bg) 100%);
+        background: linear-gradient(180deg, #fbfdff 0%, var(--bg) 100%);
       }
 
-      main {
-        width: min(920px, calc(100% - 32px));
+      a {
+        color: var(--accent-dark);
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 32px));
         margin: 0 auto;
-        padding: 56px 0;
+        padding: 28px 0 44px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 0 22px;
       }
 
       .brand {
         display: flex;
         align-items: center;
         gap: 12px;
-        color: var(--muted);
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 800;
       }
 
       .brand-mark {
-        width: 13px;
-        height: 13px;
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 8px;
+        background: #12243a;
+        color: #ffffff;
+        font-size: 15px;
+        letter-spacing: 0;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .status-pill::before {
+        content: "";
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: var(--success);
-        box-shadow: 0 0 0 7px rgba(47, 139, 103, 0.14);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .intro,
+      .download-card,
+      .info-card {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 420px;
+        padding: 34px;
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--accent-dark);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
       }
 
       h1 {
-        margin: 24px 0 14px;
+        margin: 0;
         max-width: 720px;
-        font-size: clamp(40px, 7vw, 76px);
-        line-height: 0.98;
+        font-size: clamp(36px, 6vw, 64px);
+        line-height: 1.02;
         letter-spacing: 0;
       }
 
       .lead {
-        max-width: 680px;
-        margin: 0;
+        max-width: 660px;
+        margin: 22px 0 0;
         color: var(--muted);
         font-size: 18px;
-        line-height: 1.7;
+        line-height: 1.65;
       }
 
-      .download-panel {
+      .trust-row {
         display: grid;
-        gap: 22px;
-        margin-top: 28px;
-        padding: 28px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .trust-item {
+        min-width: 0;
+        padding: 14px;
         border: 1px solid var(--border);
         border-radius: 8px;
-        background: var(--panel);
-        box-shadow: 0 24px 70px rgba(34, 76, 126, 0.12);
+        background: var(--surface-soft);
       }
 
-      .download-top {
+      .trust-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .trust-item strong {
+        display: block;
+        margin-top: 5px;
+        overflow-wrap: anywhere;
+      }
+
+      .download-card {
         display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 18px;
-        align-items: center;
+        gap: 20px;
+        padding: 28px;
       }
 
       .version {
-        margin: 0 0 6px;
-        font-size: 26px;
-        font-weight: 800;
+        margin: 0;
+        font-size: 30px;
+        font-weight: 850;
       }
 
       .status {
-        margin: 0;
+        margin: 8px 0 0;
         color: var(--muted);
         line-height: 1.5;
       }
@@ -105,14 +193,19 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 52px;
-        padding: 14px 22px;
+        min-height: 54px;
+        width: 100%;
+        padding: 15px 18px;
         border-radius: 8px;
-        background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-        color: #fff;
-        font-weight: 800;
+        background: var(--accent);
+        color: #ffffff;
+        font-weight: 850;
+        text-align: center;
         text-decoration: none;
-        box-shadow: 0 16px 32px rgba(31, 115, 224, 0.26);
+      }
+
+      .download-button:hover {
+        background: var(--accent-dark);
       }
 
       .download-button[aria-disabled="true"] {
@@ -122,95 +215,214 @@
 
       .meta-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
+        grid-template-columns: 1fr;
+        gap: 10px;
       }
 
       .meta {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 12px;
+        align-items: center;
         min-width: 0;
-        padding: 16px;
+        padding: 13px 14px;
         border: 1px solid var(--border);
         border-radius: 8px;
-        background: #f8fbff;
+        background: var(--surface-soft);
       }
 
       .meta span {
-        display: block;
-        margin-bottom: 8px;
         color: var(--muted);
         font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
+        font-weight: 800;
         text-transform: uppercase;
       }
 
       .meta strong {
+        min-width: 0;
         overflow-wrap: anywhere;
       }
 
-      .links {
+      .secondary-links {
         display: flex;
-        gap: 14px;
         flex-wrap: wrap;
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 750;
       }
 
-      .links a {
-        color: var(--accent-strong);
-        font-weight: 700;
+      .content-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
       }
 
-      @media (max-width: 720px) {
-        main {
-          padding: 36px 0;
+      .info-card {
+        padding: 22px;
+        box-shadow: none;
+      }
+
+      .info-card h2 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .info-card p,
+      .info-card ol {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .info-card ol {
+        padding-left: 20px;
+      }
+
+      .note {
+        margin-top: 18px;
+        padding: 16px 18px;
+        border: 1px solid #e5d5ba;
+        border-radius: 8px;
+        background: #fff9ee;
+        color: var(--warning);
+        line-height: 1.5;
+      }
+
+      @media (max-width: 860px) {
+        .hero,
+        .content-grid,
+        .trust-row {
+          grid-template-columns: 1fr;
         }
 
-        .download-top,
-        .meta-grid {
+        .intro {
+          min-height: auto;
+          padding: 28px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          width: min(100% - 24px, 1120px);
+          padding-top: 18px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .download-card,
+        .intro,
+        .info-card {
+          padding: 20px;
+        }
+
+        .meta {
           grid-template-columns: 1fr;
+          gap: 4px;
         }
       }
     </style>
   </head>
   <body>
-    <main>
-      <div class="brand"><span class="brand-mark"></span> Connex Downloads</div>
-      <h1>Baixe a versão mais recente do Connex.</h1>
-      <p class="lead">
-        Esta página acompanha automaticamente o feed público de atualização.
-        Sempre que uma nova release for publicada, o botão principal passa a baixar o instalador atualizado.
-      </p>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">CX</span> Connex</div>
+        <div class="status-pill">Downloads sempre atualizados</div>
+      </header>
 
-      <section class="download-panel">
-        <div class="download-top">
+      <section class="hero">
+        <div class="intro">
+          <div>
+            <p class="eyebrow">Acesso remoto para suporte</p>
+            <h1>Baixe a versão mais recente do Connex.</h1>
+            <p class="lead">
+              Instale o Connex em computadores Windows e mantenha o aplicativo pronto
+              para receber suporte remoto com atualizações distribuídas pelo feed oficial.
+            </p>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-item">
+              <span>Plataforma</span>
+              <strong>Windows</strong>
+            </div>
+            <div class="trust-item">
+              <span>Canal</span>
+              <strong>Release estável</strong>
+            </div>
+            <div class="trust-item">
+              <span>Atualização</span>
+              <strong>Automática</strong>
+            </div>
+          </div>
+        </div>
+
+        <aside class="download-card" aria-label="Download do Connex">
           <div>
             <p class="version" data-version>Carregando versão...</p>
-            <p class="status" data-status>Consultando o feed público de updates.</p>
+            <p class="status" data-status>Consultando o feed público de atualizações.</p>
           </div>
+
           <a class="download-button" href="latest.yml" aria-disabled="true" data-download>
-            Baixar Connex
+            Preparando download
           </a>
-        </div>
 
-        <div class="meta-grid">
-          <div class="meta">
-            <span>Arquivo</span>
-            <strong data-file>--</strong>
+          <div class="meta-grid">
+            <div class="meta">
+              <span>Arquivo</span>
+              <strong data-file>--</strong>
+            </div>
+            <div class="meta">
+              <span>Tamanho</span>
+              <strong data-size>--</strong>
+            </div>
+            <div class="meta">
+              <span>Publicado</span>
+              <strong data-date>--</strong>
+            </div>
           </div>
-          <div class="meta">
-            <span>Tamanho</span>
-            <strong data-size>--</strong>
-          </div>
-          <div class="meta">
-            <span>Publicado em</span>
-            <strong data-date>--</strong>
-          </div>
-        </div>
 
-        <div class="links">
-          <a href="latest.yml">Ver latest.yml</a>
-          <a href="latest.yml" data-direct-link>Link direto do instalador</a>
-        </div>
+          <div class="secondary-links">
+            <a href="latest.yml">Ver feed de atualização</a>
+            <a href="latest.yml" data-direct-link>Link direto do instalador</a>
+          </div>
+        </aside>
       </section>
+
+      <section class="content-grid" aria-label="Informações de instalação">
+        <article class="info-card">
+          <h2>Como instalar</h2>
+          <ol>
+            <li>Baixe o instalador mais recente.</li>
+            <li>Execute o arquivo no computador Windows.</li>
+            <li>Abra o Connex e informe o ID para o atendimento.</li>
+          </ol>
+        </article>
+
+        <article class="info-card">
+          <h2>Ambientes corporativos</h2>
+          <p>
+            Caso a rede use proxy, firewall ou inspeção SSL, ajuste o proxy no painel
+            administrador do Connex antes de iniciar a conexão.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h2>Versão certa</h2>
+          <p>
+            Esta página lê o arquivo <strong>latest.yml</strong>. Quando uma nova release
+            for publicada, o botão principal passa a baixar a versão atual automaticamente.
+          </p>
+        </article>
+      </section>
+
+      <p class="note">
+        Se o navegador bloquear o download por política da empresa, copie o link direto
+        do instalador e libere o domínio de downloads do Connex na rede corporativa.
+      </p>
     </main>
 
     <script>
@@ -223,34 +435,34 @@
       const directLinkEl = document.querySelector("[data-direct-link]");
 
       function readValue(yaml, key) {
-        const match = yaml.match(new RegExp(`^${key}:\\s*(.+)$`, "m"));
+        const match = yaml.match(new RegExp("^" + key + ":\\s*(.+)$", "m"));
         return match ? match[1].trim().replace(/^['"]|['"]$/g, "") : "";
       }
 
       function formatBytes(value) {
         const size = Number(value);
-        return Number.isFinite(size) && size > 0 ? `${(size / 1024 / 1024).toFixed(1)} MB` : "--";
+        return Number.isFinite(size) && size > 0 ? (size / 1024 / 1024).toFixed(1) + " MB" : "--";
       }
 
       async function loadLatest() {
         try {
-          const response = await fetch(`latest.yml?ts=${Date.now()}`, {
+          const response = await fetch("latest.yml?ts=" + Date.now(), {
             cache: "no-store",
           });
 
           if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+            throw new Error("HTTP " + response.status);
           }
 
           const yaml = await response.text();
           const version = readValue(yaml, "version");
-          const path = readValue(yaml, "path");
+          const installerPath = readValue(yaml, "path");
           const size = readValue(yaml, "size");
           const releaseDate = readValue(yaml, "releaseDate");
 
-          versionEl.textContent = version ? `Connex ${version}` : "Connex";
+          versionEl.textContent = version ? "Connex " + version : "Connex";
           statusEl.textContent = "Instalador para Windows pronto para download.";
-          fileEl.textContent = path || "--";
+          fileEl.textContent = installerPath || "--";
           sizeEl.textContent = formatBytes(size);
           dateEl.textContent = releaseDate
             ? new Intl.DateTimeFormat("pt-BR", {
@@ -259,15 +471,16 @@
               }).format(new Date(releaseDate))
             : "--";
 
-          if (path) {
-            downloadEl.href = path;
+          if (installerPath) {
+            downloadEl.href = installerPath;
             downloadEl.removeAttribute("aria-disabled");
             downloadEl.textContent = "Baixar Connex para Windows";
-            directLinkEl.href = path;
+            directLinkEl.href = installerPath;
           }
         } catch (error) {
           versionEl.textContent = "Connex";
-          statusEl.textContent = `Não foi possível carregar o feed de updates: ${error.message}`;
+          statusEl.textContent = "Não foi possível carregar o feed de atualizações: " + error.message;
+          downloadEl.textContent = "Download indisponível";
         }
       }
 

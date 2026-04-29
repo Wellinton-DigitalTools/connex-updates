@@ -1,8 +1,8 @@
-version: 0.1.5
+version: 0.1.6
 files:
-  - url: Connex-Setup-0.1.5.exe
-    sha512: zuIOBmeDcWq6UZGZEDExfXKMA9XzTlXpQijkcb/DZNOWCgKWbbSAiWG5l7yCBUc1jmlceOKDvwmhtV+e2aIn0Q==
-    size: 89111950
-path: Connex-Setup-0.1.5.exe
-sha512: zuIOBmeDcWq6UZGZEDExfXKMA9XzTlXpQijkcb/DZNOWCgKWbbSAiWG5l7yCBUc1jmlceOKDvwmhtV+e2aIn0Q==
-releaseDate: '2026-04-29T03:33:33.071Z'
+  - url: Connex-Setup-0.1.6.exe
+    sha512: b0eYUgqVU9nWYvOak5J8D0l9gVD1lDmD1aj06PoEkG0Zj+kD3N0HUErQ37FkbFfhgdqbaT2K0yd2ExA34mRFSA==
+    size: 89112397
+path: Connex-Setup-0.1.6.exe
+sha512: b0eYUgqVU9nWYvOak5J8D0l9gVD1lDmD1aj06PoEkG0Zj+kD3N0HUErQ37FkbFfhgdqbaT2K0yd2ExA34mRFSA==
+releaseDate: '2026-04-29T04:17:54.972Z'

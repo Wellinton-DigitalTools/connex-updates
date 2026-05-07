@@ -1,8 +1,8 @@
 version: 0.1.2
 files:
   - url: Connex-Desktop-0.1.2.exe
-    sha512: zVw3L9aR8k4g+K3Iu2OI8+f94yyYQ/yAV18Rte+W2GIFJCDiLj5ae0OmJ+LO7Ii9GQUdIgfmRxYGwHxSjTdZ7Q==
-    size: 91345447
+    sha512: f+IqNaMk4Nvw+lBavpdZnk8wmuBYuj/jQeuCx9SWVq3is+9rLhkJ+p4pt8LLYG9PLLUCLHF84s0M99ATX8tB0A==
+    size: 91345531
 path: Connex-Desktop-0.1.2.exe
-sha512: zVw3L9aR8k4g+K3Iu2OI8+f94yyYQ/yAV18Rte+W2GIFJCDiLj5ae0OmJ+LO7Ii9GQUdIgfmRxYGwHxSjTdZ7Q==
-releaseDate: '2026-05-07T21:23:47.880Z'
+sha512: f+IqNaMk4Nvw+lBavpdZnk8wmuBYuj/jQeuCx9SWVq3is+9rLhkJ+p4pt8LLYG9PLLUCLHF84s0M99ATX8tB0A==
+releaseDate: '2026-05-07T21:27:48.216Z'

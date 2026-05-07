@@ -1,8 +1,8 @@
-version: 0.1.21
+version: 0.1.2
 files:
-  - url: Connex-Setup-0.1.21.exe
-    sha512: qf+BB6C25rEeRI1twOrbSLrvMO3pdfbJ7Lr+CYl70cWaQNAAny95xyJ2TGZwzZdTNrxWhLKR885aj7c5AwAadA==
-    size: 89213472
-path: Connex-Setup-0.1.21.exe
-sha512: qf+BB6C25rEeRI1twOrbSLrvMO3pdfbJ7Lr+CYl70cWaQNAAny95xyJ2TGZwzZdTNrxWhLKR885aj7c5AwAadA==
-releaseDate: '2026-05-02T22:34:44.288Z'
+  - url: Connex-Desktop-0.1.2.exe
+    sha512: ASRmiRJVgSug9rt1dZgbwMOlnqbvGlX/qMclYwoaruFozJwUwadw2Oq/dWeSqoVf/Mg4qUoGjMlPXRAHjdkQwA==
+    size: 91345387
+path: Connex-Desktop-0.1.2.exe
+sha512: ASRmiRJVgSug9rt1dZgbwMOlnqbvGlX/qMclYwoaruFozJwUwadw2Oq/dWeSqoVf/Mg4qUoGjMlPXRAHjdkQwA==
+releaseDate: '2026-05-07T21:18:44.451Z'
